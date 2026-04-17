@@ -2,7 +2,7 @@
 
 ###
 
-<p align="center">Web & Mobile Apss Dev | Student at Universitas Muhammadiyah Sukabumi | IT Enthusiast</p>
+<p align="center">Web & Mobile App Dev | Student at Universitas Muhammadiyah Sukabumi | IT Enthusiast</p>
 
 ###
 
