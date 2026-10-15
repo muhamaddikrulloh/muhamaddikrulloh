@@ -27,8 +27,6 @@
   </p>
 </div>
 
-<br>
-
 <div align="left">
   <a href="https://www.linkedin.com/in/muhamaddikrulloh/">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="28" alt="LinkedIn" />
