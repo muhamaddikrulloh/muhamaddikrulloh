@@ -8,10 +8,6 @@
   alt="Zenitsu Animation"
 />
 
-<p align="left">
-  Informatics Engineering Student | Web & Mobile Developer | QA Enthusiast
-</p>
-
 <div align="left">
   <p>
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="38" alt="Python" />&nbsp;&nbsp;&nbsp;
