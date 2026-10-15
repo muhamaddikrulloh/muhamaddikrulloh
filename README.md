@@ -1,35 +1,46 @@
 
-<h1 align="center">Hi, I'm Muhamad Dikrulloh</h1>
+<h1 align="left">Hi, I'm Muhamad Dikrulloh</h1>
 
-<p align="center">
+<img
+  align="right"
+  src="https://giffiles.alphacoders.com/218/218881.gif"
+  width="180"
+  alt="Anime GIF"
+/>
+
+<p align="left">
   Web & Mobile Developer | Informatics Engineering Student
 </p>
 
-<p align="center">
-  Passionate about building functional, intuitive, and user-friendly applications.
-</p>
-
-<div align="center">
-  <img
-    src="https://giffiles.alphacoders.com/218/218881.gif"
-    height="150"
-    alt="Anime animation"
-  />
+<div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="32" alt="Python" />
+  <img width="10" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" height="32" alt="Laravel" />
+  <img width="10" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="32" alt="React" />
+  <img width="10" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" height="32" alt="Next.js" />
+  <img width="10" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" height="32" alt="Kotlin" />
+  <img width="10" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" height="32" alt="Flutter" />
+  <img width="10" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" height="32" alt="Tailwind CSS" />
+  <img width="10" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height="32" alt="PostgreSQL" />
+  <img width="10" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" height="32" alt="MongoDB" />
+  <img width="10" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" height="32" alt="Firebase" />
+  <img width="10" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" height="32" alt="Google Cloud" />
+  <img width="10" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" height="32" alt="Docker" />
 </div>
 
-<h3 align="center">Tech Stack</h3>
+<br>
 
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=python,laravel,react,nextjs,kotlin,flutter&theme=dark" alt="Development technologies" />
-</div>
-
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=tailwind,postgres,mongodb,firebase,gcp,docker&theme=dark" alt="Tools and databases" />
-</div>
-
-<h3 align="center">Connect With Me</h3>
-
-<div align="center">
+<div align="left">
   <a href="https://www.linkedin.com/in/muhamaddikrulloh">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="28" alt="LinkedIn" />
   </a>
@@ -44,12 +55,10 @@
   </a>
 </div>
 
-<h3 align="center">Contribution Activity</h3>
+<br clear="both">
 
-<div align="center">
-  <img
-    src="https://raw.githubusercontent.com/muhamaddikrulloh/muhamaddikrulloh/snake-output/snake.svg"
-    alt="Snake contribution animation"
-    width="100%"
-  />
-</div>
+<img
+  src="https://raw.githubusercontent.com/muhamaddikrulloh/muhamaddikrulloh/snake-output/snake.svg"
+  alt="Snake animation"
+  width="100%"
+/>
