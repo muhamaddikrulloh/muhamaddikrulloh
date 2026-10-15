@@ -51,14 +51,11 @@
   and exploring new technologies.
 </p>
 
-<br>
-
 <img
   src="https://raw.githubusercontent.com/muhamaddikrulloh/muhamaddikrulloh/snake-output/snake.svg"
   width="100%"
   alt="Snake Contribution Animation"
 />
-
 <h2 align="center">GitHub Activity</h2>
 
 <div align="center">
