@@ -4,12 +4,12 @@
 <img
   align="right"
   src="https://giffiles.alphacoders.com/218/218881.gif"
-  width="200"
+  width="190"
   alt="Zenitsu Animation"
 />
 
 <p align="left">
-  Web & Mobile Developer | Informatics Engineering Student
+  Informatics Engineering Student | Web & Mobile Developer | QA Enthusiast
 </p>
 
 <div align="left">
@@ -30,11 +30,7 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height="32" alt="PostgreSQL" />
   <img width="10" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" height="32" alt="MongoDB" />
-</div>
-
-<br>
-
-<div align="left">
+  <img width="10" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" height="32" alt="Firebase" />
   <img width="10" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" height="32" alt="Google Cloud" />
@@ -45,7 +41,7 @@
 <br>
 
 <div align="left">
-  <a href="https://www.linkedin.com/in/muhamaddikrulloh">
+  <a href="https://www.linkedin.com/in/muhamaddikrulloh/">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="28" alt="LinkedIn" />
   </a>
   <a href="https://www.instagram.com/muhamaddikrulloh">
@@ -63,13 +59,23 @@
 
 <br>
 
+<h2 align="center">About Me</h2>
+
+<p align="center">
+  Informatics Engineering student at <b>Universitas Muhammadiyah Sukabumi</b>,
+  passionate about web and mobile development, software quality assurance,
+  and exploring new technologies.
+</p>
+
+<br>
+
 <img
   src="https://raw.githubusercontent.com/muhamaddikrulloh/muhamaddikrulloh/snake-output/snake.svg"
   width="100%"
   alt="Snake Contribution Animation"
 />
 
-<h3 align="left">GitHub Activity</h3>
+<h2 align="center">GitHub Activity</h2>
 
 <div align="center">
   <img
