@@ -1,4 +1,4 @@
-<div align="center">
+<div align="left">
   <img
     src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1200&color=E6EDF3&vCenter=true&width=650&height=55&lines=Hi%2C+I'm+Muhamad+Dikrulloh;"
     alt="Typing Animation"
