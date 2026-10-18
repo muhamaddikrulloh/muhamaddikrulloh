@@ -25,9 +25,10 @@
 </tr>
 </table>
 
+<br>
+
 <!-- Social links -->
 <h3><code>muhamaddikrulloh@github ~ $ ./links.sh</code></h3>
-
 <p><b>Informatics Engineering Student · Web & Mobile Developer · Tech Enthusiast</b></p>
 
 [![GitHub](https://img.shields.io/badge/GitHub-muhamaddikrulloh-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/muhamaddikrulloh)
