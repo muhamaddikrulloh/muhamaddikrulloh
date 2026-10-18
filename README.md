@@ -14,8 +14,6 @@
   width="860"
   alt="Muhamad Dikrulloh's GitHub contribution graph"
   />
-
-  <br>
   
   <!-- ASCII portrait and GitHub statistics -->
   <h3><code>muhamaddikrulloh@github ~ $ whoami</code></h3>
