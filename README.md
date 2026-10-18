@@ -2,10 +2,9 @@
 
   <!-- Animated introduction -->
   <img
-    src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1200&color=E6EDF3&center=true&vCenter=true&width=650&height=40&lines=Hi%2C+I'm+Muhamad+Dikrulloh"
+    src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1200&color=E6EDF3&center=true&vCenter=true&width=650&height=55&lines=Hi%2C+I'm+Muhamad+Dikrulloh"
     alt="Typing Animation"
-  /><br>
-  <sub><b>Informatics Engineering Student · Web & Mobile Developer · Tech Enthusiast</b></sub>
+  />
 
   <!-- Animated contribution graph, refreshed daily by GitHub Actions -->
   <h3><code>muhamaddikrulloh@github ~ $ ./contributions.sh</code></h3>
@@ -30,6 +29,7 @@
   
   <!-- Social links -->
   <h3><code>muhamaddikrulloh@github ~ $ ./links.sh</code></h3>
+  <p><b>Informatics Engineering Student · Web & Mobile Developer · Tech Enthusiast</b></p>
   
   [![GitHub](https://img.shields.io/badge/GitHub-muhamaddikrulloh-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/muhamaddikrulloh)
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-Muhamad_Dikrulloh-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/muhamaddikrulloh)
@@ -37,4 +37,6 @@
   [![Discord](https://img.shields.io/badge/Discord-Connect-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/524617691756101633)
   [![Email](https://img.shields.io/badge/Email-Contact_Me-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:muhamaddikrulloh@gmail.com)
 
+  <br>
+  
 </div>
