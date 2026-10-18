@@ -13,19 +13,21 @@
     alt="GitHub Contribution Heatmap"
   />
 
-  <br>
-
   <h3><code>dikrulloh@github ~ $ whoami</code></h3>
-
-  <img
-    src="./dikrulloh-ascii.svg"
-    width="42%"
-    alt="ASCII Portrait"
-  />
-  <img
-    src="./stats.svg"
-    width="56%"
-    alt="GitHub Statistics"
-  />
+  
+  <p align="center">
+    <img
+      src="./dikrulloh-ascii.svg"
+      width="42%"
+      align="top"
+      alt="ASCII Portrait"
+    />
+    <img
+      src="./stats.svg"
+      width="56%"
+      align="top"
+      alt="GitHub Statistics"
+    />
+  </p>
 
 </div>
