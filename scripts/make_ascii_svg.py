@@ -1,13 +1,13 @@
-
 """
-Generate an animated monochrome ASCII portrait SVG.
+Convert a portrait photo into a CLEAN, monochrome ASCII-art SVG
+that "types" itself in like a terminal, then holds.
 
-Features:
-- Preserves transparent PNG backgrounds
-- Clean, single-color ASCII portrait
-- Terminal-style window
-- Row-by-row typing animation
-- GitHub README compatible (SVG + SMIL)
+Improved version:
+- preserves transparent background
+- better facial detail
+- cleaner subject isolation
+- still monochrome, not color-noisy
+- GitHub README safe (SVG + SMIL only)
 """
 
 from PIL import Image, ImageEnhance, ImageOps, ImageFilter
@@ -15,51 +15,40 @@ import html
 import os
 import sys
 
-
-# ============================================================
-# PATH CONFIGURATION
-# ============================================================
-
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-SRC = (
-    sys.argv[1]
-    if len(sys.argv) > 1
-    else os.path.join(HERE, "..", "source-prepped.png")
-)
-
-OUT = (
-    sys.argv[2]
-    if len(sys.argv) > 2
-    else os.path.join(HERE, "..", "dikrulloh-ascii.svg")
-)
-
+SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "..", "source-prepped.png")
+OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "..", "dikrulloh-ascii.svg")
 
 # ============================================================
-# ASCII CONFIGURATION
+# DETAIL SETTINGS
 # ============================================================
 
-COLS = int(os.environ.get("COLS", 180))
+# more columns = more detail
+COLS = int(os.environ.get("COLS", 200))
 
 ART_W_TARGET = 800
 CELL_W = ART_W_TARGET / COLS
 CELL_H = CELL_W * 15 / 8
-
 ROWS = round(COLS * 8 / 15)
 
-RAMP = " .`:-=+*cs#%@"
+# good monochrome density ramp
+RAMP = " .,:;irsXA253hMHGS#9B&@"
 
-CONTRAST = 1.15
-BRIGHTNESS = 1.10
-GAMMA = 1.10
+# image tuning
+CONTRAST = 1.22
+BRIGHTNESS = 1.03
+GAMMA = 1.06
 SHARPEN = True
 
-WHITE_FLOOR = 0.95
-ALPHA_THRESHOLD = 100
+# luminance above this becomes blank
+WHITE_FLOOR = 0.93
 
+# transparency below this becomes blank
+ALPHA_THRESHOLD = 80
 
 # ============================================================
-# TERMINAL LAYOUT
+# LAYOUT
 # ============================================================
 
 PAD = 20
@@ -68,351 +57,178 @@ STATUS_H = 30
 
 ART_W = COLS * CELL_W
 ART_H = ROWS * CELL_H
-
 CANVAS_W = ART_W + PAD * 2
 CANVAS_H = TITLEBAR_H + ART_H + STATUS_H + PAD
 
-
-# ============================================================
-# COLORS
-# ============================================================
-
-BG = "#0D1117"
+# colors
+BG = "#0d1117"
 BG2 = "#111722"
+FRAME = "#30363d"
+TITLE_TEXT = "#7d8590"
+INK = "#c9d1d9"
+CURSOR = "#c9d1d9"
 
-FRAME = "#30363D"
-TITLE_TEXT = "#8B949E"
-
-INK = "#C9D1D9"
-CURSOR = "#C9D1D9"
-
-DOT_COLORS = ["#FF5F56", "#FFBD2E", "#27C93F"]
-
-
-# ============================================================
-# TERMINAL IDENTITY
-# ============================================================
-
-USERNAME = "dikrulloh"
-FULL_NAME = "Muhamad Dikrulloh"
-
-HEADER_TEXT = f"{USERNAME}@github: ~$ ./portrait.sh"
-STATUS_PREFIX = f"{USERNAME}@github:~$ whoami "
-STATUS_TEXT = STATUS_PREFIX + FULL_NAME
-
-
-# ============================================================
-# ANIMATION
-# ============================================================
-
-TOTAL_DURATION = 5.8
-
-ROW_DUR = TOTAL_DURATION / ROWS
+# animation timing
+ROW_DUR = 5.8 / ROWS
 STAGGER = ROW_DUR
 
 STATIC = bool(os.environ.get("STATIC"))
 
-
 # ============================================================
-# IMAGE PROCESSING
+# IMAGE SAMPLING
 # ============================================================
 
-if not os.path.isfile(SRC):
-    raise FileNotFoundError(
-        f"Source image not found: {SRC}"
-    )
+# preserve transparency
+im = Image.open(SRC).convert("RGBA")
 
-# Preserve the alpha channel.
-image = Image.open(SRC).convert("RGBA")
-
-alpha = image.getchannel("A")
-gray = ImageOps.grayscale(image)
+alpha = im.getchannel("A")
+gray = ImageOps.grayscale(im)
 
 if SHARPEN:
     gray = gray.filter(
-        ImageFilter.UnsharpMask(
-            radius=2,
-            percent=140,
-            threshold=2
-        )
+        ImageFilter.UnsharpMask(radius=1.8, percent=170, threshold=2)
     )
 
 gray = ImageEnhance.Brightness(gray).enhance(BRIGHTNESS)
 gray = ImageEnhance.Contrast(gray).enhance(CONTRAST)
 
-gray = gray.resize(
-    (COLS, ROWS),
-    Image.Resampling.LANCZOS
-)
+gray = gray.resize((COLS, ROWS), Image.Resampling.LANCZOS)
+alpha = alpha.resize((COLS, ROWS), Image.Resampling.LANCZOS)
 
-alpha = alpha.resize(
-    (COLS, ROWS),
-    Image.Resampling.LANCZOS
-)
-
-pixels = gray.load()
-mask = alpha.load()
-
-
-# ============================================================
-# ASCII CONVERSION
-# ============================================================
+px = gray.load()
+ax = alpha.load()
 
 rows_txt = []
 
 for y in range(ROWS):
     chars = []
-
     for x in range(COLS):
-
-        # Completely hide transparent background.
-        if mask[x, y] < ALPHA_THRESHOLD:
+        # hide transparent background
+        if ax[x, y] < ALPHA_THRESHOLD:
             chars.append(" ")
             continue
 
-        lum = pixels[x, y] / 255.0
+        lum = px[x, y] / 255.0
         lum = pow(lum, GAMMA)
 
         if lum >= WHITE_FLOOR:
             chars.append(" ")
             continue
 
-        index = round(
-            (1.0 - lum) * (len(RAMP) - 1)
-        )
-
-        index = max(
-            0,
-            min(index, len(RAMP) - 1)
-        )
-
-        chars.append(RAMP[index])
+        idx = int((1.0 - lum) * (len(RAMP) - 1) + 0.5)
+        idx = max(0, min(len(RAMP) - 1, idx))
+        chars.append(RAMP[idx])
 
     rows_txt.append("".join(chars))
 
+art_top = TITLEBAR_H + PAD * 0.35
 
 # ============================================================
-# SVG HELPERS
+# SVG
 # ============================================================
 
 parts = []
 
-
-def add(value):
-    parts.append(value)
-
-
-def esc(value):
-    return html.escape(str(value), quote=True)
-
-
-# ============================================================
-# SVG DOCUMENT
-# ============================================================
-
-add(
-    f'<svg xmlns="http://www.w3.org/2000/svg" '
-    f'width="{CANVAS_W:.0f}" '
-    f'height="{CANVAS_H:.0f}" '
-    f'viewBox="0 0 {CANVAS_W:.1f} {CANVAS_H:.1f}" '
-    f'font-family="Consolas, Menlo, monospace">'
+parts.append(
+    f'<svg xmlns="http://www.w3.org/2000/svg" width="{CANVAS_W}" height="{CANVAS_H}" '
+    f'viewBox="0 0 {CANVAS_W} {CANVAS_H}" font-family="ui-monospace, SFMono-Regular, '
+    f'Menlo, Consolas, monospace">'
 )
 
-# Background gradient
-add(
+parts.append(
     '<defs>'
-    '<linearGradient id="terminal-bg" x1="0" y1="0" x2="0" y2="1">'
+    f'<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">'
     f'<stop offset="0" stop-color="{BG2}"/>'
     f'<stop offset="1" stop-color="{BG}"/>'
-    '</linearGradient>'
+    f'</linearGradient>'
     '</defs>'
 )
 
-# Terminal background
-add(
-    f'<rect width="{CANVAS_W:.1f}" '
-    f'height="{CANVAS_H:.1f}" '
-    f'rx="12" fill="url(#terminal-bg)"/>'
+parts.append(f'<rect width="{CANVAS_W}" height="{CANVAS_H}" rx="12" fill="url(#bg)"/>')
+parts.append(
+    f'<rect x="0.5" y="0.5" width="{CANVAS_W-1}" height="{CANVAS_H-1}" rx="12" '
+    f'fill="none" stroke="{FRAME}" stroke-width="1"/>'
 )
 
-# Terminal border
-add(
-    f'<rect x="0.5" y="0.5" '
-    f'width="{CANVAS_W - 1:.1f}" '
-    f'height="{CANVAS_H - 1:.1f}" '
-    f'rx="12" fill="none" '
-    f'stroke="{FRAME}" stroke-width="1"/>'
+parts.append(
+    f'<line x1="0" y1="{TITLEBAR_H}" x2="{CANVAS_W}" y2="{TITLEBAR_H}" stroke="{FRAME}"/>'
 )
 
-
-# ============================================================
-# TITLE BAR
-# ============================================================
-
-add(
-    f'<line x1="0" y1="{TITLEBAR_H}" '
-    f'x2="{CANVAS_W:.1f}" y2="{TITLEBAR_H}" '
-    f'stroke="{FRAME}"/>'
-)
-
-for index, color in enumerate(DOT_COLORS):
-    add(
-        f'<circle '
-        f'cx="{PAD + index * 16}" '
-        f'cy="{TITLEBAR_H / 2}" '
-        f'r="5" fill="{color}"/>'
+for i, dotcol in enumerate(["#ff5f56", "#ffbd2e", "#27c93f"]):
+    parts.append(
+        f'<circle cx="{PAD + i*16}" cy="{TITLEBAR_H/2}" r="5" fill="{dotcol}"/>'
     )
 
-add(
-    f'<text x="{CANVAS_W / 2:.1f}" '
-    f'y="{TITLEBAR_H / 2 + 4:.1f}" '
-    f'fill="{TITLE_TEXT}" '
-    f'font-size="12" '
-    f'text-anchor="middle">'
-    f'{esc(HEADER_TEXT)}'
-    '</text>'
+parts.append(
+    f'<text x="{CANVAS_W/2}" y="{TITLEBAR_H/2 + 4}" fill="{TITLE_TEXT}" font-size="12" '
+    f'text-anchor="middle">dikrulloh@github: ~$ ./portrait.sh</text>'
 )
-
-
-# ============================================================
-# ASCII ART
-# ============================================================
-
-art_top = TITLEBAR_H + PAD * 0.35
 
 font_size = CELL_H * 0.86
 
-for row_index, line in enumerate(rows_txt):
+for ry, line in enumerate(rows_txt):
+    y = art_top + ry * CELL_H + CELL_H * 0.74
+    row_y = art_top + ry * CELL_H
+    delay = ry * STAGGER
+    safe = html.escape(line)
 
-    row_y = art_top + row_index * CELL_H
-
-    text_y = row_y + CELL_H * 0.74
-
-    delay = row_index * STAGGER
-
-    safe_line = esc(line)
-
-    row_text = (
-        f'<text xml:space="preserve" '
-        f'x="{PAD}" '
-        f'y="{text_y:.2f}" '
-        f'fill="{INK}" '
-        f'font-size="{font_size:.2f}" '
-        f'textLength="{ART_W:.2f}" '
-        f'lengthAdjust="spacing">'
-        f'{safe_line}'
-        '</text>'
+    text = (
+        f'<text xml:space="preserve" x="{PAD}" y="{y:.1f}" fill="{INK}" '
+        f'font-size="{font_size:.1f}" textLength="{ART_W}" '
+        f'lengthAdjust="spacing">{safe}</text>'
     )
 
     if STATIC:
-        add(row_text)
+        parts.append(text)
         continue
 
-    # Reveal each row from left to right.
-    clip_id = f"ascii-row-{row_index}"
-
-    add(
-        f'<clipPath id="{clip_id}">'
-        f'<rect x="{PAD}" '
-        f'y="{row_y:.2f}" '
-        f'height="{CELL_H:.2f}" '
-        f'width="0">'
-        f'<animate attributeName="width" '
-        f'from="0" to="{ART_W:.2f}" '
-        f'begin="{delay:.3f}s" '
-        f'dur="{ROW_DUR:.3f}s" '
-        f'fill="freeze"/>'
-        '</rect>'
-        '</clipPath>'
+    parts.append(
+        f'<clipPath id="r{ry}">'
+        f'<rect x="{PAD}" y="{row_y:.1f}" height="{CELL_H}" width="0">'
+        f'<animate attributeName="width" from="0" to="{ART_W}" begin="{delay:.3f}s" '
+        f'dur="{ROW_DUR:.2f}s" fill="freeze"/>'
+        f'</rect>'
+        f'</clipPath>'
     )
 
-    add(
-        f'<g clip-path="url(#{clip_id})">'
-        f'{row_text}'
-        '</g>'
+    parts.append(f'<g clip-path="url(#r{ry})">{text}</g>')
+
+    parts.append(
+        f'<rect y="{row_y+1:.1f}" width="{CELL_W}" height="{max(1, CELL_H-2)}" '
+        f'fill="{CURSOR}" opacity="0">'
+        f'<animate attributeName="x" from="{PAD}" to="{PAD+ART_W}" begin="{delay:.3f}s" '
+        f'dur="{ROW_DUR:.2f}s" fill="freeze"/>'
+        f'<set attributeName="opacity" to="0.85" begin="{delay:.3f}s"/>'
+        f'<set attributeName="opacity" to="0" begin="{delay+ROW_DUR:.3f}s"/>'
+        f'</rect>'
     )
 
-    # Moving block cursor.
-    add(
-        f'<rect '
-        f'y="{row_y + 1:.2f}" '
-        f'width="{CELL_W:.2f}" '
-        f'height="{max(1, CELL_H - 2):.2f}" '
-        f'fill="{CURSOR}" '
-        f'opacity="0">'
-        f'<animate attributeName="x" '
-        f'from="{PAD}" '
-        f'to="{PAD + ART_W:.2f}" '
-        f'begin="{delay:.3f}s" '
-        f'dur="{ROW_DUR:.3f}s" '
-        f'fill="freeze"/>'
-        f'<set attributeName="opacity" '
-        f'to="0.85" begin="{delay:.3f}s"/>'
-        f'<set attributeName="opacity" '
-        f'to="0" begin="{delay + ROW_DUR:.3f}s"/>'
-        '</rect>'
-    )
-
-
-# ============================================================
-# STATUS BAR
-# ============================================================
-
+# status bar
 status_line_y = TITLEBAR_H + ART_H + PAD * 0.35
-
 status_y = status_line_y + 19
 
-add(
-    f'<line x1="0" '
-    f'y1="{status_line_y:.2f}" '
-    f'x2="{CANVAS_W:.1f}" '
-    f'y2="{status_line_y:.2f}" '
-    f'stroke="{FRAME}"/>'
+parts.append(
+    f'<line x1="0" y1="{status_line_y:.1f}" x2="{CANVAS_W}" y2="{status_line_y:.1f}" stroke="{FRAME}"/>'
 )
 
-add(
-    f'<text x="{PAD}" '
-    f'y="{status_y:.2f}" '
-    f'fill="{TITLE_TEXT}" '
-    f'font-size="13">'
-    f'{esc(STATUS_PREFIX)}'
-    f'<tspan fill="{INK}">{esc(FULL_NAME)}</tspan>'
-    '</text>'
+parts.append(
+    f'<text x="{PAD}" y="{status_y:.1f}" fill="{TITLE_TEXT}" font-size="13">'
+    f'dikrulloh@github:~$ whoami <tspan fill="{INK}">Muhamad Dikrulloh</tspan></text>'
 )
 
-# Blinking terminal cursor.
-# Approximate width for Consolas monospace at 13px.
-cursor_x = PAD + len(STATUS_TEXT) * 13 * 0.6
-
-add(
-    f'<rect x="{cursor_x:.2f}" '
-    f'y="{status_y - 12:.2f}" '
-    f'width="8" height="14" '
-    f'fill="{INK}">'
-    '<animate attributeName="opacity" '
-    'values="1;1;0;0" '
-    'keyTimes="0;0.5;0.51;1" '
-    'dur="1s" '
-    'repeatCount="indefinite"/>'
-    '</rect>'
+status_chars = len("dikrulloh@github:~$ whoami Muhamad Dikrulloh ")
+parts.append(
+    f'<rect x="{PAD + status_chars * 13 * 0.6:.1f}" y="{status_y-12:.1f}" width="8" height="14" fill="{INK}">'
+    f'<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.51;1" '
+    f'dur="1s" repeatCount="indefinite"/>'
+    f'</rect>'
 )
 
-
-# ============================================================
-# SAVE SVG
-# ============================================================
-
-add("</svg>")
+parts.append("</svg>")
 
 svg = "".join(parts)
 
-output_dir = os.path.dirname(os.path.abspath(OUT))
-os.makedirs(output_dir, exist_ok=True)
+with open(OUT, "w", encoding="utf-8") as f:
+    f.write(svg)
 
-with open(OUT, "w", encoding="utf-8") as file:
-    file.write(svg)
-
-print(f"SVG generated: {OUT}")
-print(f"Canvas: {CANVAS_W:.0f} x {CANVAS_H:.0f}")
-print(f"ASCII grid: {COLS} columns x {ROWS} rows")
-print(f"File size: {len(svg):,} bytes")
+print("wrote", OUT, len(svg), "bytes;", CANVAS_W, "x", CANVAS_H)
