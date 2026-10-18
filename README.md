@@ -8,9 +8,6 @@
   alt="Typing Animation"
 />
 
-<br>
-<br>
-
 <!-- Animated contribution graph, refreshed daily by GitHub Actions -->
 
 <h3><code>dikrulloh@github ~ $ ./contributions.sh</code></h3>
@@ -22,8 +19,6 @@
 />
 
 <br>
-<br>
-
 <!-- ASCII portrait and GitHub statistics -->
 
 <h3><code>dikrulloh@github ~ $ whoami</code></h3>
@@ -36,8 +31,6 @@
 </table>
 
 <br>
-<br>
-
 <!-- Social links -->
 
 <h3><code>dikrulloh@github ~ $ ./links.sh</code></h3>
