@@ -56,21 +56,12 @@
   passionate about web and mobile development and exploring new technologies.
 </p>
 
-<picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="https://raw.githubusercontent.com/muhamaddikrulloh/muhamaddikrulloh/output/pacman-contribution-graph-dark.svg"
-  />
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="https://raw.githubusercontent.com/muhamaddikrulloh/muhamaddikrulloh/output/pacman-contribution-graph.svg"
-  />
-  <img
-    src="https://raw.githubusercontent.com/muhamaddikrulloh/muhamaddikrulloh/output/pacman-contribution-graph.svg"
-    width="100%"
-    alt="Pac-Man Contribution Graph"
-  />
-</picture>
+
+<img
+  src="https://raw.githubusercontent.com/muhamaddikrulloh/muhamaddikrulloh/output/pacman.svg"
+  width="100%"
+  alt="Pac-Man Contribution Animation"
+/>
 
 <h2 align="center">GitHub Activity</h2>
 
