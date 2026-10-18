@@ -1,5 +1,10 @@
+<div align="left">
+  <img
+    src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1200&color=E6EDF3&vCenter=true&width=650&height=55&lines=Hi%2C+I'm+Muhamad+Dikrulloh;"
+    alt="Typing Animation"
+  />
+</div>
 
-<h1 align="left">Hi, I'm Muhamad Dikrulloh</h1>
 
 <img
   align="right"
@@ -53,7 +58,7 @@
 
 <img
   src="https://raw.githubusercontent.com/muhamaddikrulloh/muhamaddikrulloh/snake-output/snake.svg"
-  width="100%"
+  width="90%"
   alt="Snake Contribution Animation"
 />
 <h2 align="center">GitHub Activity</h2>
