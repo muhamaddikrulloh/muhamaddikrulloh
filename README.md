@@ -5,6 +5,15 @@
     src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1200&color=E6EDF3&center=true&vCenter=true&width=650&height=55&lines=Hi%2C+I'm+Muhamad+Dikrulloh"
     alt="Typing Animation"
   />
+
+  <!-- Animated contribution graph, refreshed daily by GitHub Actions -->
+  <h3><code>muhamaddikrulloh@github ~ $ ./contributions.sh</code></h3>
+  
+  <img
+  src="./contrib-heatmap.svg"
+  width="860"
+  alt="Muhamad Dikrulloh's GitHub contribution graph"
+  />
   
   <!-- ASCII portrait and GitHub statistics -->
   <h3><code>muhamaddikrulloh@github ~ $ whoami</code></h3>
@@ -15,17 +24,6 @@
   <td valign="top"><img src="./stats.svg" width="420" alt="GitHub streak and contribution statistics" /></td>
   </tr>
   </table>
-
-  <br>
-  
-  <!-- Animated contribution graph, refreshed daily by GitHub Actions -->
-  <h3><code>muhamaddikrulloh@github ~ $ ./contributions.sh</code></h3>
-  
-  <img
-    src="./contrib-heatmap.svg"
-    width="860"
-    alt="Muhamad Dikrulloh's GitHub contribution graph"
-  />
   
   <br>
   
