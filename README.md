@@ -16,6 +16,8 @@
   </tr>
   </table>
 
+  <br>
+  
   <!-- Animated contribution graph, refreshed daily by GitHub Actions -->
   <h3><code>muhamaddikrulloh@github ~ $ ./contributions.sh</code></h3>
   
