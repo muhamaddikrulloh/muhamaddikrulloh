@@ -1,4 +1,3 @@
-
 <div align="center">
 
 <!-- Animated introduction -->
@@ -18,7 +17,6 @@
   alt="Muhamad Dikrulloh's GitHub contribution graph"
 />
 
-<br>
 <!-- ASCII portrait and GitHub statistics -->
 
 <h3><code>dikrulloh@github ~ $ whoami</code></h3>
@@ -30,7 +28,6 @@
 </tr>
 </table>
 
-<br>
 <!-- Social links -->
 
 <h3><code>dikrulloh@github ~ $ ./links.sh</code></h3>
@@ -42,7 +39,5 @@
 [![Instagram](https://img.shields.io/badge/Instagram-muhamaddikrulloh-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/muhamaddikrulloh)
 [![Discord](https://img.shields.io/badge/Discord-Connect-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/524617691756101633)
 [![Email](https://img.shields.io/badge/Email-Contact_Me-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:muhamaddikrulloh@gmail.com)
-
-<br>
 
 </div>
