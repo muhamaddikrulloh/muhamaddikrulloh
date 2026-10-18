@@ -161,7 +161,7 @@ for i, dotcol in enumerate(["#ff5f56", "#ffbd2e", "#27c93f"]):
 
 parts.append(
     f'<text x="{CANVAS_W/2}" y="{TITLEBAR_H/2 + 4}" fill="{TITLE_TEXT}" font-size="12" '
-    f'text-anchor="middle">dikrulloh@github: ~$ ./portrait.sh</text>'
+    f'text-anchor="middle">muhamaddikrulloh@github: ~$ ./portrait.sh</text>'
 )
 
 font_size = CELL_H * 0.86
@@ -213,10 +213,10 @@ parts.append(
 
 parts.append(
     f'<text x="{PAD}" y="{status_y:.1f}" fill="{TITLE_TEXT}" font-size="13">'
-    f'dikrulloh@github:~$ whoami <tspan fill="{INK}">Muhamad Dikrulloh</tspan></text>'
+    f'muhamaddikrulloh@github:~$ whoami <tspan fill="{INK}">Muhamad Dikrulloh</tspan></text>'
 )
 
-status_chars = len("dikrulloh@github:~$ whoami Muhamad Dikrulloh ")
+status_chars = len("muhamaddikrulloh@github:~$ whoami Muhamad Dikrulloh ")
 parts.append(
     f'<rect x="{PAD + status_chars * 13 * 0.6:.1f}" y="{status_y-12:.1f}" width="8" height="14" fill="{INK}">'
     f'<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.51;1" '
