@@ -9,7 +9,7 @@
 <img
   align="right"
   src="https://giffiles.alphacoders.com/218/218881.gif"
-  width="190"
+  width="200"
   alt="Zenitsu Animation"
 />
 
