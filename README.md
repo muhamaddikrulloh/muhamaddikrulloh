@@ -4,8 +4,8 @@
 <img
   src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1200&color=E6EDF3&center=true&vCenter=true&width=650&height=55&lines=Hi%2C+I'm+Muhamad+Dikrulloh"
   alt="Typing Animation"
-  <p><b>Informatics Engineering Student · Web & Mobile Developer · Tech Enthusiast</b></p>
 />
+<p><b>Informatics Engineering Student · Web & Mobile Developer · Tech Enthusiast</b></p>
 
 <!-- Animated contribution graph, refreshed daily by GitHub Actions -->
 <h3><code>muhamaddikrulloh@github ~ $ ./contributions.sh</code></h3>
