@@ -31,7 +31,7 @@
   
   <!-- Social links -->
   <h3><code>muhamaddikrulloh@github ~ $ ./links.sh</code></h3>
-  <p><b>Informatics Engineering Student · Web & Mobile Developer · Tech Enthusiast</b></p>
+  <p><b>Informatics Engineering student passionate about web and mobile development, technology, and continuous learning. 🚀</b></p>
   
   [![GitHub](https://img.shields.io/badge/GitHub-muhamaddikrulloh-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/muhamaddikrulloh)
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-Muhamad_Dikrulloh-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/muhamaddikrulloh)
