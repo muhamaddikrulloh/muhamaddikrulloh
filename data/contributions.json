@@ -1,22 +1,22 @@
 {
   "username": "muhamaddikrulloh",
-  "generated_at": "2026-11-01T05:00:59Z",
+  "generated_at": "2026-11-02T05:01:49Z",
   "range": {
     "start": "2025-11-02",
+    "end": "2026-11-02"
+  },
+  "total_contributions": 269,
+  "active_days": 49,
+  "avg_per_active_day": 5.5,
+  "current_streak": {
+    "length": 27,
+    "start": "2026-10-06",
     "end": "2026-11-01"
   },
-  "total_contributions": 272,
-  "active_days": 48,
-  "avg_per_active_day": 5.7,
-  "current_streak": {
-    "length": 26,
-    "start": "2026-10-06",
-    "end": "2026-10-31"
-  },
   "longest_streak": {
-    "length": 26,
+    "length": 27,
     "start": "2026-10-06",
-    "end": "2026-10-31"
+    "end": "2026-11-01"
   },
   "best_day": {
     "date": "2026-10-18",
@@ -69,11 +69,11 @@
     },
     {
       "month": "2026-10",
-      "total": 156
+      "total": 148
     },
     {
       "month": "2026-11",
-      "total": 0
+      "total": 5
     }
   ],
   "days": [
@@ -1844,8 +1844,8 @@
     },
     {
       "date": "2026-10-21",
-      "count": 6,
-      "level": 2
+      "count": 1,
+      "level": 1
     },
     {
       "date": "2026-10-22",
@@ -1854,8 +1854,8 @@
     },
     {
       "date": "2026-10-23",
-      "count": 6,
-      "level": 2
+      "count": 3,
+      "level": 1
     },
     {
       "date": "2026-10-24",
@@ -1899,6 +1899,11 @@
     },
     {
       "date": "2026-11-01",
+      "count": 5,
+      "level": 2
+    },
+    {
+      "date": "2026-11-02",
       "count": 0,
       "level": 0
     }
